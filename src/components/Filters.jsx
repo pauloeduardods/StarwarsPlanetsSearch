@@ -51,109 +51,117 @@ function Filters() {
   };
 
   return (
-    <div>
-      <label htmlFor="by-name">
-        Filter By Name
-        <input
-          data-testid="name-filter"
-          type="text"
-          value={ filterByName.name }
-          id="by-name"
-          onChange={ ({ target: { value } }) => setFilterByName(value) }
-        />
-      </label>
-      <form onSubmit={ submitNumericFilter }>
-        <label htmlFor="columns-filter">
-          Filter By Column
-          <select
-            id="columns-filter"
-            data-testid="column-filter"
-            value={ columnsFilter }
-            onChange={ ({ target: { value } }) => setColumnsFilter(value) }
-          >
-            <option value="" disabled>Select a column</option>
-            {
-              DEFAULT_COLUMNS_FILTER.filter(filterOptions).map((column) => (
-                <option key={ column } value={ column }>{ column }</option>
-              ))
-            }
-          </select>
-        </label>
-        <label htmlFor="comparison-filter">
-          Comparison
-          <select
-            id="comparison-filter"
-            data-testid="comparison-filter"
-            value={ comparisonFilter }
-            onChange={ ({ target: { value } }) => setComparisonFilter(value) }
-          >
-            <option value="" disabled>Select a comparison</option>
-            <option value="maior que">maior que</option>
-            <option value="menor que">menor que</option>
-            <option value="igual a">igual a</option>
-          </select>
-        </label>
-        <label htmlFor="value-filter">
-          Value
+    <div className="w-full flex justify-center my-6">
+      <div className="sm:w-4/5 border-2 border-gray-200 shadow-lg py-3 px-6">
+        <div className="w-full mb-4">
+          <label htmlFor="by-name" className="block ml-2">
+            Filtrar por nome
+          </label>
           <input
-            id="value-filter"
-            data-testid="value-filter"
-            type="number"
-            value={ valueFilter }
-            onChange={ ({ target: { value } }) => setValueFilter(value) }
+            data-testid="name-filter"
+            type="text"
+            value={filterByName.name}
+            id="by-name"
+            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-200 rounded-md shadow-sm text-lg p-1 sm:p-2"
+            onChange={({ target: { value } }) => setFilterByName(value)}
           />
-        </label>
-        <button
-          data-testid="button-filter"
-          type="submit"
+        </div>
+        <form
+          onSubmit={submitNumericFilter}
+          className="border-t border-gray-200 w-full pt-4 grid grid-cols-12 gap-6"
         >
-          Filtrar
-        </button>
-      </form>
-      <form onSubmit={ submitOrder }>
-        <label htmlFor="order">
-          Order By
-          <select
-            id="order"
-            data-testid="column-sort"
-            value={ orderColumn }
-            onChange={ ({ target: { value } }) => setOrderColumn(value) }
+          <label htmlFor="columns-filter">
+            Filter By Column
+            <select
+              id="columns-filter"
+              data-testid="column-filter"
+              value={columnsFilter}
+              onChange={({ target: { value } }) => setColumnsFilter(value)}
+            >
+              <option value="" disabled>Select a column</option>
+              {
+                DEFAULT_COLUMNS_FILTER.filter(filterOptions).map((column) => (
+                  <option key={column} value={column}>{column}</option>
+                ))
+              }
+            </select>
+          </label>
+          <label htmlFor="comparison-filter">
+            Comparison
+            <select
+              id="comparison-filter"
+              data-testid="comparison-filter"
+              value={comparisonFilter}
+              onChange={({ target: { value } }) => setComparisonFilter(value)}
+            >
+              <option value="" disabled>Select a comparison</option>
+              <option value="maior que">maior que</option>
+              <option value="menor que">menor que</option>
+              <option value="igual a">igual a</option>
+            </select>
+          </label>
+          <label htmlFor="value-filter">
+            Value
+            <input
+              id="value-filter"
+              data-testid="value-filter"
+              type="number"
+              value={valueFilter}
+              onChange={({ target: { value } }) => setValueFilter(value)}
+            />
+          </label>
+          <button
+            data-testid="button-filter"
+            type="submit"
           >
-            <option value="" disabled>Select a column</option>
-            {
-              DEFAULT_COLUMNS_FILTER_SORT.map((column) => (
-                <option key={ column } value={ column }>{ column }</option>
-              ))
-            }
-          </select>
-        </label>
-        <label htmlFor="ASC">
-          <input
-            type="radio"
-            id="ASC"
-            data-testid="column-sort-input-asc"
-            onChange={ () => setOrderSort('ASC') }
-            checked={ orderSort === 'ASC' }
-          />
-          ASC
-        </label>
-        <label htmlFor="ASC">
-          <input
-            type="radio"
-            id="ASC"
-            data-testid="column-sort-input-desc"
-            onChange={ () => setOrderSort('DESC') }
-            checked={ orderSort === 'DESC' }
-          />
-          DESC
-        </label>
-        <button
-          type="submit"
-          data-testid="column-sort-button"
-        >
-          Order
-        </button>
-      </form>
+            Filtrar
+          </button>
+        </form>
+        <form onSubmit={submitOrder}>
+          <label htmlFor="order">
+            Order By
+            <select
+              id="order"
+              data-testid="column-sort"
+              value={orderColumn}
+              onChange={({ target: { value } }) => setOrderColumn(value)}
+            >
+              <option value="" disabled>Select a column</option>
+              {
+                DEFAULT_COLUMNS_FILTER_SORT.map((column) => (
+                  <option key={column} value={column}>{column}</option>
+                ))
+              }
+            </select>
+          </label>
+          <label htmlFor="ASC">
+            <input
+              type="radio"
+              id="ASC"
+              data-testid="column-sort-input-asc"
+              onChange={() => setOrderSort('ASC')}
+              checked={orderSort === 'ASC'}
+            />
+            ASC
+          </label>
+          <label htmlFor="ASC">
+            <input
+              type="radio"
+              id="ASC"
+              data-testid="column-sort-input-desc"
+              onChange={() => setOrderSort('DESC')}
+              checked={orderSort === 'DESC'}
+            />
+            DESC
+          </label>
+          <button
+            type="submit"
+            data-testid="column-sort-button"
+          >
+            Order
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

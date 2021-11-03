@@ -8,9 +8,13 @@ import RenderFilters from './components/RenderFilters';
 function App() {
   return (
     <PlanetsProvider>
-      <h1>Star Wars Planets</h1>
-      <Filters />
-      <RenderFilters />
+      <div className="lg:flex lg:items-center lg:justify-between mt-4 mb-6">
+        <div className="flex-1 min-w-0">
+          <h1 className="text-center">Star Wars Planets</h1>
+          <Filters />
+          <RenderFilters />
+        </div>
+      </div>
       <Table />
     </PlanetsProvider>
   );
