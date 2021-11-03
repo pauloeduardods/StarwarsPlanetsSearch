@@ -1,5 +1,12 @@
 import React, { useContext, useState } from 'react';
 import PlanetsContext from '../context/PlanetsContext';
+import {
+  LabelTemplate,
+  InputTemplate,
+  SelectTemplate,
+  ButtonTemplate,
+  FormTemplate,
+  SpanTemplate } from './templates';
 
 const DEFAULT_COLUMNS_FILTER = [
   'population', 'orbital_period', 'diameter', 'rotation_period', 'surface_water',
@@ -52,27 +59,25 @@ function Filters() {
 
   return (
     <div className="w-full flex justify-center my-6">
-      <div className="sm:w-4/5 border-2 border-gray-200 shadow-lg py-3 px-6">
+      <div className="sm:w-4/5 border-2 border-gray-200 shadow-lg py-3 px-6 sm:rounded-xl rounded-none">
         <div className="w-full mb-4">
-          <label htmlFor="by-name" className="block ml-2">
+          <LabelTemplate htmlFor="by-name">
             Filtrar por nome
-          </label>
-          <input
+          </LabelTemplate>
+          <InputTemplate
             data-testid="name-filter"
             type="text"
             value={filterByName.name}
             id="by-name"
-            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-200 rounded-md shadow-sm text-lg p-1 sm:p-2"
             onChange={({ target: { value } }) => setFilterByName(value)}
           />
         </div>
-        <form
-          onSubmit={submitNumericFilter}
-          className="border-t border-gray-200 w-full pt-4 grid grid-cols-12 gap-6"
-        >
-          <label htmlFor="columns-filter">
-            Filter By Column
-            <select
+        <FormTemplate onSubmit={submitNumericFilter}>
+          <div className="col-span-4">
+            <LabelTemplate htmlFor="columns-filter">
+              Filter By Column
+            </LabelTemplate>
+            <SelectTemplate
               id="columns-filter"
               data-testid="column-filter"
               value={columnsFilter}
@@ -84,11 +89,13 @@ function Filters() {
                   <option key={column} value={column}>{column}</option>
                 ))
               }
-            </select>
-          </label>
-          <label htmlFor="comparison-filter">
-            Comparison
-            <select
+            </SelectTemplate>
+          </div>
+          <div className="col-span-4">
+            <LabelTemplate htmlFor="comparison-filter">
+              Comparison
+            </LabelTemplate>
+            <SelectTemplate
               id="comparison-filter"
               data-testid="comparison-filter"
               value={comparisonFilter}
@@ -98,29 +105,33 @@ function Filters() {
               <option value="maior que">maior que</option>
               <option value="menor que">menor que</option>
               <option value="igual a">igual a</option>
-            </select>
-          </label>
-          <label htmlFor="value-filter">
-            Value
-            <input
+            </SelectTemplate>
+          </div>
+          <div className="col-span-4">
+            <LabelTemplate htmlFor="value-filter">
+              Value
+            </LabelTemplate>
+            <InputTemplate
               id="value-filter"
               data-testid="value-filter"
               type="number"
               value={valueFilter}
               onChange={({ target: { value } }) => setValueFilter(value)}
             />
-          </label>
-          <button
+          </div>
+          <ButtonTemplate
             data-testid="button-filter"
             type="submit"
           >
             Filtrar
-          </button>
-        </form>
-        <form onSubmit={submitOrder}>
-          <label htmlFor="order">
-            Order By
-            <select
+          </ButtonTemplate>
+        </FormTemplate>
+        <FormTemplate onSubmit={submitOrder}>
+          <div className="col-span-12 sm:col-span-7 md:col-span-9">
+            <LabelTemplate htmlFor="order">
+              Order By
+            </LabelTemplate>
+            <SelectTemplate
               id="order"
               data-testid="column-sort"
               value={orderColumn}
@@ -132,35 +143,42 @@ function Filters() {
                   <option key={column} value={column}>{column}</option>
                 ))
               }
-            </select>
-          </label>
-          <label htmlFor="ASC">
-            <input
-              type="radio"
-              id="ASC"
-              data-testid="column-sort-input-asc"
-              onChange={() => setOrderSort('ASC')}
-              checked={orderSort === 'ASC'}
-            />
-            ASC
-          </label>
-          <label htmlFor="ASC">
-            <input
-              type="radio"
-              id="ASC"
-              data-testid="column-sort-input-desc"
-              onChange={() => setOrderSort('DESC')}
-              checked={orderSort === 'DESC'}
-            />
-            DESC
-          </label>
-          <button
+            </SelectTemplate>
+          </div>
+          <div className="col-span-12 sm:col-span-5 md:col-span-3">
+            <SpanTemplate>
+              Order
+            </SpanTemplate>
+            <div className="flex justify-between mt-2">
+              <label htmlFor="ASC">
+                <input
+                  type="radio"
+                  id="ASC"
+                  data-testid="column-sort-input-asc"
+                  onChange={() => setOrderSort('ASC')}
+                  checked={orderSort === 'ASC'}
+                />
+                ASC
+              </label>
+              <label htmlFor="ASC">
+                <input
+                  type="radio"
+                  id="ASC"
+                  data-testid="column-sort-input-desc"
+                  onChange={() => setOrderSort('DESC')}
+                  checked={orderSort === 'DESC'}
+                />
+                DESC
+              </label>
+            </div>
+          </div>
+          <ButtonTemplate
             type="submit"
             data-testid="column-sort-button"
           >
             Order
-          </button>
-        </form>
+          </ButtonTemplate>
+        </FormTemplate>
       </div>
     </div>
   );
