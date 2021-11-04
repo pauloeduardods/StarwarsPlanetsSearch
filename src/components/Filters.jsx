@@ -156,26 +156,32 @@ function Filters() {
                   Order
                 </SpanTemplate>
                 <div className="flex justify-between mt-2">
-                  <label htmlFor="ASC">
+                  <div className="flex items-center">
                     <input
                       type="radio"
                       id="ASC"
+                      className="form-radio mr-1 h-4 w-4"
                       data-testid="column-sort-input-asc"
                       onChange={() => setOrderSort('ASC')}
                       checked={orderSort === 'ASC'}
                     />
-                    ASC
-                  </label>
-                  <label htmlFor="ASC">
+                    <label htmlFor="ASC">
+                      ASC
+                    </label>
+                  </div>
+                  <div className="flex items-center">
                     <input
                       type="radio"
                       id="ASC"
+                      className="form-radio mr-1 h-4 w-4"
                       data-testid="column-sort-input-desc"
                       onChange={() => setOrderSort('DESC')}
                       checked={orderSort === 'DESC'}
                     />
-                    DESC
-                  </label>
+                    <label htmlFor="ASC">
+                      DESC
+                    </label>
+                  </div>
                 </div>
               </div>
               <ButtonTemplate
