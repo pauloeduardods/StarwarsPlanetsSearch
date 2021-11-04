@@ -1,16 +1,22 @@
 import React from 'react';
+import FadeIn from 'react-fade-in/lib/FadeIn';
 import './App.css';
 import Table from './components/Table';
 import Filters from './components/Filters';
 import PlanetsProvider from './context/PlanetsProvider';
 import RenderFilters from './components/RenderFilters';
+import logo from './svg/logo.svg';
 
 function App() {
   return (
     <PlanetsProvider>
       <div className="lg:flex lg:items-center lg:justify-between mt-4 mb-6">
         <div className="flex-1 min-w-0">
-          <h1 className="text-center">Star Wars Planets</h1>
+          <div className="flex justify-center">
+            <FadeIn>
+              <img src={logo} alt="logo" className="h-48 w-48" />
+            </FadeIn>
+          </div>
           <Filters />
           <RenderFilters />
         </div>

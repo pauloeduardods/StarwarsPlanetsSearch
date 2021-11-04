@@ -1,6 +1,9 @@
 import React, { useContext } from 'react';
 import PlanetsContext from '../context/PlanetsContext';
 import { ThTemplate, TdTemplate } from './templates';
+import FadeIn from 'react-fade-in/lib/FadeIn';
+import Lottie from 'react-lottie';
+import Loading from '../lotties/loading.json';
 
 const NEGATIVE = -1;
 
@@ -45,54 +48,62 @@ function Table() {
     }, true,
   );
 
+  const loadingOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: Loading,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  };
+
   return (
     <div className="flex flex-col">
-      <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-        <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-          <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-            <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-200">
-                <tr>
-                  <ThTemplate>Name</ThTemplate>
-                  <ThTemplate>Rotation Period</ThTemplate>
-                  <ThTemplate>Orbital Period</ThTemplate>
-                  <ThTemplate>Diameter</ThTemplate>
-                  <ThTemplate>Climate</ThTemplate>
-                  <ThTemplate>Gravity</ThTemplate>
-                  <ThTemplate>Terrain</ThTemplate>
-                  <ThTemplate>Surface Water</ThTemplate>
-                  <ThTemplate>Population</ThTemplate>
-                  <ThTemplate>Films</ThTemplate>
-                  <ThTemplate>Created</ThTemplate>
-                  <ThTemplate>Edited</ThTemplate>
-                  <ThTemplate>URL</ThTemplate>
-                </tr>
-              </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
-                {loading || planets.length === 0 ? <tr><td>Loading...</td></tr>
-                  : planets.filter(filterByName)
-                    .filter(filterByNumericValues)
-                    .sort((a, b) => sortOptions(a, b, order))
-                    .map((planet) => (
-                      <tr key={planet.name}>
-                        <TdTemplate data-testid="planet-name">{planet.name}</TdTemplate>
-                        <TdTemplate>{planet.rotation_period}</TdTemplate>
-                        <TdTemplate>{planet.orbital_period}</TdTemplate>
-                        <TdTemplate>{planet.diameter}</TdTemplate>
-                        <TdTemplate>{planet.climate}</TdTemplate>
-                        <TdTemplate>{planet.gravity}</TdTemplate>
-                        <TdTemplate>{planet.terrain}</TdTemplate>
-                        <TdTemplate>{planet.surface_water}</TdTemplate>
-                        <TdTemplate>{planet.population}</TdTemplate>
-                        <TdTemplate>{planet.films}</TdTemplate>
-                        <TdTemplate>{planet.created}</TdTemplate>
-                        <TdTemplate>{planet.edited}</TdTemplate>
-                        <TdTemplate>{planet.url}</TdTemplate>
-                      </tr>
-                    ))}
-              </tbody>
-            </table>
-          </div>
+      <div className="-my-2 overflow-x-auto">
+        <div className="py-2 align-middle inline-block min-w-full">
+          {loading || !planets || planets.length === 0 ? (<Lottie height={150} width={150} options={loadingOptions} />)
+            : (
+              <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                <table className="min-w-full divide-y divide-gray-200">
+                  <thead className="bg-indigo-600">
+                    <tr>
+                      <ThTemplate><FadeIn>Name</FadeIn></ThTemplate>
+                      <ThTemplate><FadeIn>Rotation Period</FadeIn></ThTemplate>
+                      <ThTemplate><FadeIn>Orbital Period</FadeIn></ThTemplate>
+                      <ThTemplate><FadeIn>Diameter</FadeIn></ThTemplate>
+                      <ThTemplate><FadeIn>Climate</FadeIn></ThTemplate>
+                      <ThTemplate><FadeIn>Gravity</FadeIn></ThTemplate>
+                      <ThTemplate><FadeIn>Terrain</FadeIn></ThTemplate>
+                      <ThTemplate><FadeIn>Surface Water</FadeIn></ThTemplate>
+                      <ThTemplate><FadeIn>Population</FadeIn></ThTemplate>
+                      <ThTemplate><FadeIn>Films</FadeIn></ThTemplate>
+                      <ThTemplate><FadeIn>Residents</FadeIn></ThTemplate>
+                    </tr>
+                  </thead>
+                  <tbody className="bg-white divide-y divide-gray-300">
+                    { planets.filter(filterByName)
+                        .filter(filterByNumericValues)
+                        .sort((a, b) => sortOptions(a, b, order))
+                        .map((planet, i) => (
+                          <tr key={planet.name} className={i % 2 === 0 ? 'bg-gray-50' : 'bg-gray-200'}>
+                            <TdTemplate data-testid="planet-name"><FadeIn>{planet.name}</FadeIn></TdTemplate>
+                            <TdTemplate><FadeIn>{planet.rotation_period}</FadeIn></TdTemplate>
+                            <TdTemplate><FadeIn>{planet.orbital_period}</FadeIn></TdTemplate>
+                            <TdTemplate><FadeIn>{planet.diameter}</FadeIn></TdTemplate>
+                            <TdTemplate><FadeIn>{planet.climate}</FadeIn></TdTemplate>
+                            <TdTemplate><FadeIn>{planet.gravity}</FadeIn></TdTemplate>
+                            <TdTemplate><FadeIn>{planet.terrain}</FadeIn></TdTemplate>
+                            <TdTemplate><FadeIn>{planet.surface_water}</FadeIn></TdTemplate>
+                            <TdTemplate><FadeIn>{planet.population}</FadeIn></TdTemplate>
+                            <TdTemplate><FadeIn>{planet.films.join(' | ')}</FadeIn></TdTemplate>
+                            <TdTemplate><FadeIn>{planet.residents.join(' | ')}</FadeIn></TdTemplate>
+                          </tr>
+                        ))}
+                  </tbody>
+                </table>
+              </div>
+            )
+          }
         </div>
       </div>
     </div>  
