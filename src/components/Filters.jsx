@@ -62,7 +62,7 @@ function Filters() {
       <div className="sm:w-4/5 border-2 border-gray-200 shadow-lg py-3 px-6 sm:rounded-xl rounded-none">
         <div className="w-full mb-4">
           <LabelTemplate htmlFor="by-name">
-            Filtrar por nome
+            Filter By Name
           </LabelTemplate>
           <InputTemplate
             data-testid="name-filter"
