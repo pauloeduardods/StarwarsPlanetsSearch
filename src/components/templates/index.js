@@ -17,6 +17,7 @@ export const TdTemplate = tw.td`
   whitespace-nowrap
   overflow-x-auto
   max-w-table
+  overflow-y-hidden
 `;
 
 export const LabelTemplate = tw.label`
