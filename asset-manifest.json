@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/StarwarsPlanetsSearch/static/css/main.df978d5c.chunk.css",
+    "main.js": "/StarwarsPlanetsSearch/static/js/main.4ea605ff.chunk.js",
+    "main.js.map": "/StarwarsPlanetsSearch/static/js/main.4ea605ff.chunk.js.map",
+    "runtime-main.js": "/StarwarsPlanetsSearch/static/js/runtime-main.48af649a.js",
+    "runtime-main.js.map": "/StarwarsPlanetsSearch/static/js/runtime-main.48af649a.js.map",
+    "static/js/2.9afacd8d.chunk.js": "/StarwarsPlanetsSearch/static/js/2.9afacd8d.chunk.js",
+    "static/js/2.9afacd8d.chunk.js.map": "/StarwarsPlanetsSearch/static/js/2.9afacd8d.chunk.js.map",
+    "index.html": "/StarwarsPlanetsSearch/index.html",
+    "static/css/main.df978d5c.chunk.css.map": "/StarwarsPlanetsSearch/static/css/main.df978d5c.chunk.css.map",
+    "static/js/2.9afacd8d.chunk.js.LICENSE.txt": "/StarwarsPlanetsSearch/static/js/2.9afacd8d.chunk.js.LICENSE.txt",
+    "static/media/logo.44ff9a25.svg": "/StarwarsPlanetsSearch/static/media/logo.44ff9a25.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.48af649a.js",
+    "static/js/2.9afacd8d.chunk.js",
+    "static/css/main.df978d5c.chunk.css",
+    "static/js/main.4ea605ff.chunk.js"
+  ]
+}
