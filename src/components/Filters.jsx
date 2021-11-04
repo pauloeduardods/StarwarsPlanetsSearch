@@ -61,7 +61,7 @@ function Filters() {
   return (
     <FadeIn>
       <div className="w-full flex justify-center my-6">
-        <div className="sm:w-4/5 border-2 border-gray-200 shadow-lg sm:rounded-xl rounded-none">
+        <div className="sm:w-4/5 border-2 bg-gray-50 border-gray-200 shadow-lg sm:rounded-xl rounded-none">
           <div className="bg-indigo-600 w-full h-16 sm:rounded-t-xl rounded-none flex justify-center items-center">
             <h1 className="text-3xl font-bold text-white">Filters</h1>
           </div>

@@ -10,7 +10,7 @@ import logo from './svg/logo.svg';
 function App() {
   return (
     <PlanetsProvider>
-      <div className="lg:flex lg:items-center lg:justify-between mt-4 mb-6">
+      <div className="lg:flex lg:items-center lg:justify-between pt-4 pb-6 bg-gray-100">
         <div className="flex-1 min-w-0">
           <div className="flex justify-center">
             <FadeIn>
