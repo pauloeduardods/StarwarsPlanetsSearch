@@ -64,9 +64,6 @@ function Table() {
                   <ThTemplate>Population</ThTemplate>
                   <ThTemplate>Films</ThTemplate>
                   <ThTemplate>Residents</ThTemplate>
-                  {/* <ThTemplate>Created</ThTemplate> */}
-                  {/* <ThTemplate>Edited</ThTemplate> */}
-                  {/* <ThTemplate>URL</ThTemplate> */}
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-300">
@@ -75,7 +72,7 @@ function Table() {
                     .filter(filterByNumericValues)
                     .sort((a, b) => sortOptions(a, b, order))
                     .map((planet, i) => (
-                      <tr key={planet.name + i} className={i % 2 === 0 ? 'bg-gray-50' : 'bg-gray-200'}>
+                      <tr key={planet.name} className={i % 2 === 0 ? 'bg-gray-50' : 'bg-gray-200'}>
                         <TdTemplate data-testid="planet-name">{planet.name}</TdTemplate>
                         <TdTemplate>{planet.rotation_period}</TdTemplate>
                         <TdTemplate>{planet.orbital_period}</TdTemplate>
@@ -87,9 +84,6 @@ function Table() {
                         <TdTemplate>{planet.population}</TdTemplate>
                         <TdTemplate>{planet.films.join(' | ')}</TdTemplate>
                         <TdTemplate>{planet.residents.join(' | ')}</TdTemplate>
-                        {/* <TdTemplate>{planet.created}</TdTemplate> */}
-                        {/* <TdTemplate>{planet.edited}</TdTemplate> */}
-                        {/* <TdTemplate>{planet.url}</TdTemplate> */}
                       </tr>
                     ))}
               </tbody>
