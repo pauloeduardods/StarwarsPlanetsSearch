@@ -63,18 +63,19 @@ function Table() {
                   <ThTemplate>Surface Water</ThTemplate>
                   <ThTemplate>Population</ThTemplate>
                   <ThTemplate>Films</ThTemplate>
+                  <ThTemplate>Residents</ThTemplate>
                   <ThTemplate>Created</ThTemplate>
                   <ThTemplate>Edited</ThTemplate>
                   <ThTemplate>URL</ThTemplate>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-                {loading || planets.length === 0 ? <tr><td>Loading...</td></tr>
+                {loading || !planets || planets.length === 0 ? <tr><td>Loading...</td></tr>
                   : planets.filter(filterByName)
                     .filter(filterByNumericValues)
                     .sort((a, b) => sortOptions(a, b, order))
-                    .map((planet) => (
-                      <tr key={planet.name}>
+                    .map((planet, i) => (
+                      <tr key={planet.name + i}>
                         <TdTemplate data-testid="planet-name">{planet.name}</TdTemplate>
                         <TdTemplate>{planet.rotation_period}</TdTemplate>
                         <TdTemplate>{planet.orbital_period}</TdTemplate>
@@ -84,7 +85,8 @@ function Table() {
                         <TdTemplate>{planet.terrain}</TdTemplate>
                         <TdTemplate>{planet.surface_water}</TdTemplate>
                         <TdTemplate>{planet.population}</TdTemplate>
-                        <TdTemplate>{planet.films}</TdTemplate>
+                        <TdTemplate>{planet.films.join(' | ')}</TdTemplate>
+                        <TdTemplate>{planet.residents.join(' | ')}</TdTemplate>
                         <TdTemplate>{planet.created}</TdTemplate>
                         <TdTemplate>{planet.edited}</TdTemplate>
                         <TdTemplate>{planet.url}</TdTemplate>

@@ -1,9 +1,26 @@
 const API_URL = 'https://swapi-trybe.herokuapp.com/api';
 
+const fetchUrl = async (url) => {
+  try {
+    const response = await fetch(url);
+    return await response.json();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const fetchFilms = async () => {
   try {
     const response = await fetch(`${API_URL}/films`);
     const data = await response.json();
+    if (data.count > 10) {
+      const promises = [];
+      for (let i = 10; i <= data.count; i += 1) {
+        promises.push(fetchUrl(`${API_URL}/films/${i}`));
+      }
+      const result = await Promise.all(promises);
+      result.forEach((item) => data.results.push(item));
+    }
     return data.results;
   } catch (error) {
     console.log(error);
@@ -14,7 +31,15 @@ const fetchPeoples = async () => {
   try {
     const response = await fetch(`${API_URL}/people`);
     const data = await response.json();
-    return data.results;
+    if (data.count > 10) {
+      const promises = [];
+      for (let i = 10; i <= data.count; i += 1) {
+        promises.push(fetchUrl(`${API_URL}/people/${i}`));
+      }
+      const result = await Promise.all(promises);
+      result.forEach((item) => data.results.push(item));
+    }
+    return data.results
   } catch (error) {
     console.log(error);
   }
@@ -25,7 +50,15 @@ const fetchPlanets = async () => {
   const filmsData = await fetchFilms();
   try {
     const response = await fetch(`${API_URL}/planets`);
-    const { results } = await response.json();
+    const { results, count } = await response.json();
+    if (count > 10) {
+      const promises = [];
+      for (let i = 10; i <= count; i += 1) {
+        promises.push(fetchUrl(`${API_URL}/planets/${i}`));
+      }
+      const result = await Promise.all(promises);
+      result.forEach((item) => results.push(item));
+    }
     const planets = await results.map((planet) => {
       const { films, residents } = planet;
       const filmsNames = films.map((film) => {
@@ -34,7 +67,7 @@ const fetchPlanets = async () => {
       });
       const residentsNames = residents.map((resident) => {
         const residentData = peoplesData.find((peopleItem) => peopleItem.url === resident);
-        return residentData;
+        return residentData ? residentData.name : null;
       });
       return {
         ...planet,
