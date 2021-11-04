@@ -47,11 +47,11 @@ function Table() {
 
   return (
     <div className="flex flex-col">
-      <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-        <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+      <div className="-my-2 overflow-x-auto">
+        <div className="py-2 align-middle inline-block min-w-full">
           <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
             <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-200">
+              <thead className="bg-indigo-600">
                 <tr>
                   <ThTemplate>Name</ThTemplate>
                   <ThTemplate>Rotation Period</ThTemplate>
@@ -64,18 +64,18 @@ function Table() {
                   <ThTemplate>Population</ThTemplate>
                   <ThTemplate>Films</ThTemplate>
                   <ThTemplate>Residents</ThTemplate>
-                  <ThTemplate>Created</ThTemplate>
-                  <ThTemplate>Edited</ThTemplate>
-                  <ThTemplate>URL</ThTemplate>
+                  {/* <ThTemplate>Created</ThTemplate> */}
+                  {/* <ThTemplate>Edited</ThTemplate> */}
+                  {/* <ThTemplate>URL</ThTemplate> */}
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
+              <tbody className="bg-white divide-y divide-gray-300">
                 {loading || !planets || planets.length === 0 ? <tr><td>Loading...</td></tr>
                   : planets.filter(filterByName)
                     .filter(filterByNumericValues)
                     .sort((a, b) => sortOptions(a, b, order))
                     .map((planet, i) => (
-                      <tr key={planet.name + i}>
+                      <tr key={planet.name + i} className={i % 2 === 0 ? 'bg-gray-50' : 'bg-gray-200'}>
                         <TdTemplate data-testid="planet-name">{planet.name}</TdTemplate>
                         <TdTemplate>{planet.rotation_period}</TdTemplate>
                         <TdTemplate>{planet.orbital_period}</TdTemplate>
@@ -87,9 +87,9 @@ function Table() {
                         <TdTemplate>{planet.population}</TdTemplate>
                         <TdTemplate>{planet.films.join(' | ')}</TdTemplate>
                         <TdTemplate>{planet.residents.join(' | ')}</TdTemplate>
-                        <TdTemplate>{planet.created}</TdTemplate>
-                        <TdTemplate>{planet.edited}</TdTemplate>
-                        <TdTemplate>{planet.url}</TdTemplate>
+                        {/* <TdTemplate>{planet.created}</TdTemplate> */}
+                        {/* <TdTemplate>{planet.edited}</TdTemplate> */}
+                        {/* <TdTemplate>{planet.url}</TdTemplate> */}
                       </tr>
                     ))}
               </tbody>

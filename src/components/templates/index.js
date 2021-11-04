@@ -6,7 +6,7 @@ export const ThTemplate = tw.th`
   text-left
   text-xs
   font-medium
-  text-gray-500
+  text-white
   uppercase
   tracking-wider
 `;
@@ -15,6 +15,8 @@ export const TdTemplate = tw.td`
   px-6
   py-4
   whitespace-nowrap
+  overflow-x-auto
+  max-w-table
 `;
 
 export const LabelTemplate = tw.label`
