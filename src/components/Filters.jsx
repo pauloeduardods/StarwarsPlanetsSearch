@@ -128,6 +128,7 @@ function Filters() {
               <ButtonTemplate
                 data-testid="button-filter"
                 type="submit"
+                disabled={!columnsFilter || !comparisonFilter || !valueFilter}
               >
                 Filtrar
               </ButtonTemplate>
