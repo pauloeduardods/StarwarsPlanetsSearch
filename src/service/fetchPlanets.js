@@ -15,7 +15,7 @@ const fetchFilms = async () => {
     const data = await response.json();
     if (data.count > 10) {
       const promises = [];
-      for (let i = 10; i <= data.count; i += 1) {
+      for (let i = 11; i <= data.count; i += 1) {
         promises.push(fetchUrl(`${API_URL}/films/${i}`));
       }
       const result = await Promise.all(promises);
@@ -33,7 +33,7 @@ const fetchPeoples = async () => {
     const data = await response.json();
     if (data.count > 10) {
       const promises = [];
-      for (let i = 10; i <= data.count; i += 1) {
+      for (let i = 11; i <= data.count; i += 1) {
         promises.push(fetchUrl(`${API_URL}/people/${i}`));
       }
       const result = await Promise.all(promises);
@@ -53,7 +53,7 @@ const fetchPlanets = async () => {
     const { results, count } = await response.json();
     if (count > 10) {
       const promises = [];
-      for (let i = 10; i <= count; i += 1) {
+      for (let i = 11; i <= count; i += 1) {
         promises.push(fetchUrl(`${API_URL}/planets/${i}`));
       }
       const result = await Promise.all(promises);
