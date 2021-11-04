@@ -79,7 +79,7 @@ function Filters() {
               />
             </div>
             <FormTemplate onSubmit={submitNumericFilter}>
-              <div className="col-span-4">
+              <div className="col-span-4 flex justify-between flex-col">
                 <LabelTemplate htmlFor="columns-filter">
                   Filter By Column
                 </LabelTemplate>
@@ -97,7 +97,7 @@ function Filters() {
                   }
                 </SelectTemplate>
               </div>
-              <div className="col-span-4">
+              <div className="col-span-4 flex justify-between flex-col">
                 <LabelTemplate htmlFor="comparison-filter">
                   Comparison
                 </LabelTemplate>
@@ -113,7 +113,7 @@ function Filters() {
                   <option value="igual a">igual a</option>
                 </SelectTemplate>
               </div>
-              <div className="col-span-4">
+              <div className="col-span-4 flex justify-between flex-col">
                 <LabelTemplate htmlFor="value-filter">
                   Value
                 </LabelTemplate>
