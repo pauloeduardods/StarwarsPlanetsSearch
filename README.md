@@ -4,7 +4,7 @@ Link para a aplicação: https://pauloedsg.com/recipes-app/
 
 Projeto consistia em fazer uma aplicação em React de um App onde você pode consultar e filtrar por planetas do universo StarWars.
 
-<img src=""/>
+<img src="./StarWars.png"/>
 
 
 ## Aprendizados
